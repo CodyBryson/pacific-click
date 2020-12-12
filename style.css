@@ -6,9 +6,7 @@ body{
 
 main{
   flex-grow: 1;
-  background-image: url(cockpit2.png);
-  background-size: cover;
-  min-height: 100vh;
+  
 }
 header{
   min-height: 8vh;
@@ -19,8 +17,11 @@ footer{
 .card-main{
   padding: 10px;
   background: black;
-  margin: 10px;
   opacity: .8;
+}
+.target-frame{
+  background-image: url(cockpit2.png);
+  background-size: cover;
 }
 .kaiju{
   opacity: .8;
@@ -64,16 +65,18 @@ footer{
    border-radius: 50%;
    position:absolute()
  }
+ .pilot{
+   max-height: 275px;
+   max-width: 275px;
+   
+ }
 
 .card-shelf{
   background-color: black;
   opacity: .8;
   padding: 10px;
   border-radius: 4px;
-  
-  
 }
-
 
 .card-status{
   opacity: .9;
