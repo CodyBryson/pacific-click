@@ -14,18 +14,18 @@
 
 <body>
   <header class="container-fluid">
-    <p class="display-1 text-center strong"> Pacific Clicker</p>
+    <h1 class="display-1 text-center strong"> Pacific Click</h1>
   </header>
   <main class="container-fluid">
     <div class="row justify-content-center text-center">
       <div class="col-4 card-main">
-        <h4 class="text-light">LEVEL: <span class="text-success">1</span></h4>
+        <h4 class="text-light">LEVEL: <span class="text-success" id="level">1</span></h4>
       </div>
       <div class="col-4 card-main">
-        <h4 class="text-light">JAEGER HEALTH: <span class="text-danger">100%</span></h4>
+        <h4 class="text-light">KAIJU HEALTH: <span class="text-danger" id="k-health">100%</span></h4>
       </div>
       <div class="col-4 card-main">
-        <h4 class="text-light">KAIJU CORES: <span class="text-warning">0</span></h4>
+        <h4 class="text-light">KAIJU CORES: <span class="text-warning" id="k-cores">0</span></h4>
       </div>
     </div>
 
@@ -35,48 +35,55 @@
         <h4 class="text-light text-center">UPGRADES</h4>
         <div>
           <a href="#" class="link wobble-vertical-on-hover">
-            <button type="button" class="btn btn-dark button-missile"><img src="missile.png" class="missile"
-                alt=""></button>
-          </a>
-          <p class="text-light"><b>Auto-Missile Launcher: <span class="text-success">25</span><span
-                class="text-warning"> Cores</span></b></h5>
-        </div>
-        <div>
-          <a href="#" class="link wobble-vertical-on-hover">
             <button type="button" class="btn btn-dark button-targetingcomputer"><img src="targetingcomputer.png"
-                class="missile" alt=""></button>
+                class="missile" alt="" onclick="buyComputer()"></button>
           </a>
-          <p class="text-light"><b>Targeting Computer: <span class="text-success">100</span><span class="text-warning">
+          <p class="text-light"><b>Targeting Computer: <span class="text-success" id="comp-cost"></span><span
+                class="text-warning">
                 Cores</span></b></h5>
         </div>
         <div>
           <a href="#" class="link wobble-vertical-on-hover">
-            <button type="button" class="btn btn-dark button-reactor"><img src="Reactor Core.png" class="missile"
-                alt=""></button>
+            <button type="button" class="btn btn-dark button-missile"><img src="missile.png" class="missile" alt=""
+                onclick="buyMissile()"></button>
           </a>
-          <p class="text-light"><b>Reactor Core Upgrade: <span class="text-success">500</span><span
+          <p class="text-light"><b>Auto-Missile Launcher: <span class="text-success" id="miss-cost"></span><span
+                class="text-warning"> Cores</span></b></h5>
+        </div>
+
+        <div>
+          <a href="#" class="link wobble-vertical-on-hover">
+            <button type="button" class="btn btn-dark button-reactor"><img src="Reactor Core.png" class="missile" alt=""
+                onclick="buyReactor()"></button>
+          </a>
+          <p class="text-light"><b>Reactor Core Upgrade: <span class="text-success" id="react-cost"></span><span
                 class="text-warning"> Cores</span></b></h5>
         </div>
         <div>
           <a href="#" class="link wobble-vertical-on-hover">
-            <button type="button" class="btn btn-dark button-wrench"><img src="wrench.png" class="missile"
-                alt=""></button>
+            <button type="button" class="btn btn-dark button-wrench"><img src="wrench.png" class="missile" alt=""
+                onclick="buyHealth()"></button>
           </a>
-          <p class="text-light"><b>Jaeger Maintenence: <span class="text-success">1000</span><span class="text-warning">
+          <p class="text-light"><b>Jaeger Maintenence: <span class="text-success" id="health-cost"></span><span
+                class="text-warning">
                 Cores</span></b></h5>
         </div>
       </div>
       <div class="d-flex justify-content-center align-items-center col-8 target-frame">
-        <img src="kaijutest.png" class="kaiju img-fluid" alt="" srcset="">
+        <img src="kaijutest.png" class="kaiju img-fluid mb-5" alt="" srcset="" onclick="shoot()">
       </div>
       <div class="col-2  statusScreen p-0">
         <div class="card-status card-shelf p-4">
           <h4 class="text-light text-left py-2">STATUS</h4>
-          <p class="text-light text-left"><b>Auto-Missle Launcher(s)</b>: <span class="text-secondary">0</span></p>
-          <p class="text-light text-left"><b>Targeting Computer Upgrade(s)</b>: <span class="text-secondary">0</span>
+          <p class="text-light text-left"><b>Targeting Computer Upgrade(s)</b>: <span class="text-secondary"
+              id="comp-total"></span>
           </p>
-          <p class="text-light text-left"><b>Reactor Core Upgrade(s)</b>: <span class="text-secondary">0</span></p>
-          <p class="text-light text-left"><b>Maintence Received</b>: <span class="text-secondary">0</span></p>
+          <p class="text-light text-left"><b>Auto-Missle Launcher(s)</b>: <span class="text-secondary"
+              id="miss-total"></span></p>
+          <p class="text-light text-left"><b>Reactor Core Upgrade(s)</b>: <span class="text-secondary"
+              id="react-total"></span></p>
+          <p class="text-light text-left"><b>Maintence Received</b>: <span class="text-secondary"
+              id="health-total"></span></p>
         </div>
         <div class="radaroverlay card-shelf">
           <img src="dangerradar.gif" class="gipsydangerblueprint" alt="" srcset="">
@@ -95,7 +102,7 @@
         </audio>
       </div>
       <div class="col-4 kaiju-health card-shelf">
-        <h4 class="text-light">KAIJU HEALTH: <span class="text-danger">100%</span></h4>
+        <h4 class="text-light">JAEGER HEALTH: <span class="text-danger" id="j-health">100%</span></h4>
       </div>
       <div class="col-4 emergency-sword card-shelf">
         <h2 class="text-light">Emergency Sword Protocol: <span class="text-success">Available</span></h2>
