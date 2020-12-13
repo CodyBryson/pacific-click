@@ -23,9 +23,14 @@ footer{
   background-image: url(cockpit2.png);
   background-size: cover;
 }
+.game-box{
+  background-image: url(citybackground.gif);
+  background-size: cover;
+}
 .kaiju{
   opacity: .8;
-  min-height: 30rem;
+  min-height: 25rem;
+  
 }
 .kaijuhealthbar{
   opacity: .8;
@@ -73,14 +78,10 @@ footer{
 
 .card-shelf{
   background-color: black;
-  opacity: .8;
   padding: 10px;
   border-radius: 4px;
 }
 
-.card-status{
-  opacity: .9;
-}
 button{
   padding: 10px;
   margin: 10px;

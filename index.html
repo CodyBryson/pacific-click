@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="row text-center justify-content-center">
+    <div class="row text-center justify-content-center game-box">
 
       <div class="col-2 card-shelf">
         <h4 class="text-light text-center">UPGRADES</h4>
@@ -50,7 +50,14 @@
           <p class="text-light"><b>Auto-Missile Launcher: <span class="text-success" id="miss-cost"></span><span
                 class="text-warning"> Cores</span></b></h5>
         </div>
-
+        <div>
+          <a href="#" class="link wobble-vertical-on-hover">
+            <button type="button" class="btn btn-dark button-drone"><img src="drone.png" class="missile" alt=""
+                onclick="buyDrone()"></button>
+          </a>
+          <p class="text-light"><b>Laser Drones: <span class="text-success" id="drone-cost"></span><span
+                class="text-warning"> Cores</span></b></h5>
+        </div>
         <div>
           <a href="#" class="link wobble-vertical-on-hover">
             <button type="button" class="btn btn-dark button-reactor"><img src="Reactor Core.png" class="missile" alt=""
@@ -69,8 +76,8 @@
                 Cores</span></b></h5>
         </div>
       </div>
-      <div class="d-flex justify-content-center align-items-center col-8 target-frame">
-        <img src="kaijutest.png" class="kaiju img-fluid mb-5" alt="" srcset="" onclick="shoot()">
+      <div class="d-flex col-8 target-frame align-items-center justify-content-center">
+        <img src="kaijutest.png" class="kaiju" alt="" srcset="" onclick="shoot()">
       </div>
       <div class="col-2  statusScreen p-0">
         <div class="card-status card-shelf p-4">
@@ -80,6 +87,8 @@
           </p>
           <p class="text-light text-left"><b>Auto-Missle Launcher(s)</b>: <span class="text-secondary"
               id="miss-total"></span></p>
+          <p class="text-light text-left"><b>Laser Drone(s)</b>: <span class="text-secondary" id="drone-total"></span>
+          </p>
           <p class="text-light text-left"><b>Reactor Core Upgrade(s)</b>: <span class="text-secondary"
               id="react-total"></span></p>
           <p class="text-light text-left"><b>Maintence Received</b>: <span class="text-secondary"
@@ -96,13 +105,11 @@
     </div>
     <div class="row text-center">
       <div class="col-4 audio-controls autoplay card-shelf">
-        <audio controls autoplay>
-          <source src="PACIFIC RIM THEME (80s REMIX) - Atomic Shrine Maiden.mp3" type="audio/mpeg">
-          Your browser does not support music.
-        </audio>
+        <h2 class="text-light">Attack Counter: <span class="text-success" id="click-count"></span></h2>
       </div>
       <div class="col-4 kaiju-health card-shelf">
-        <h4 class="text-light">JAEGER HEALTH: <span class="text-danger" id="j-health">100%</span></h4>
+        <h4 class="text-light">JAEGER HEALTH: <span class="text-danger" id="j-health"></span><span
+            class="text-danger">%</span></h4>
       </div>
       <div class="col-4 emergency-sword card-shelf">
         <h2 class="text-light">Emergency Sword Protocol: <span class="text-success">Available</span></h2>
