@@ -1,3 +1,22 @@
+
+// STRETCH GOALS:
+// Developer mode button that draws option buttons for devs.
+// Options:
+// Stop kaiju attack
+// Give kaiju cores
+// Remove kaiju cores
+// Set jaeger health
+// Set kaiju health
+// Set level
+
+// Create attack interval and attack damage for kaiju
+// Add explosion effects to mouse clicks.
+// Randomize backgrounds with a background index.
+// Add autoplay music with music controls.
+// Add Category Five Kaiju every five levels.
+// Add Badge System
+// Save data to local cache.
+
 //global variables
 let level = 1;
 let jaegerbaseHealth = 100;
