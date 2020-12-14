@@ -245,6 +245,13 @@ function kaijuDeath() {
     randomKaiju()
   }
 }
+// kaiju attack function
+function kaijuAttack() {
+  jaeger_health -= Math.floor(level * .5);
+}
+function startattackInterval() {
+  var attackInterval = setInterval(kaijuAttack, 2000);
+}
 // draw functions and random types
 function randomKaiju() {
   let lad = Math.floor(Math.random() * kaijuType.length);
@@ -313,6 +320,7 @@ function statUpdate() {
 startmissileInterval();
 startregenInterval();
 startdroneInterval();
-drawkaijuHealth()
-randomKaiju()
+startattackInterval();
+drawkaijuHealth();
+randomKaiju();
 statUpdate()
