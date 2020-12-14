@@ -1,8 +1,14 @@
 //global variables
 let level = 1;
-let jaeger_health = 100;
+let jaegerbaseHealth = 100;
+let jaegerMultiplier = 0;
+let jaeger_health = (jaegerbaseHealth + jaegerMultiplier);
 let kaijuCores = 0;
-let kaijuHealth = 100;
+let kaijubaseHealth = 100;
+let kaijuMultiplier = 0;
+let kaijuHealth = (kaijubaseHealth + kaijuMultiplier);
+let kaiju
+
 
 let clickCount = 0;
 
@@ -30,7 +36,13 @@ let shootUpgrades = {
     price: 1,
     quantity: 0,
     multiplier: 5
+  },
+  support: {
+    price: 15,
+    quantity: 0,
+    multiplier: 15
   }
+
 };
 let reactorUpgrades = {
   reactor: {
@@ -45,11 +57,57 @@ let healthUpgrades = {
     quantity: 0,
     multiplier: 5
   }
-};
+}
+
+let kaijuType = [
+  {
+    img: '<img src="kaijutest.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 1
+  },
+  {
+    img: '<img src="kaijutest2.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 2
+  },
+  {
+    img: '<img src="kaijutest3.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 3
+  },
+  {
+    img: '<img src="kaijutest4.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 4
+  },
+  {
+    img: '<img src="kaijutest5.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 5
+  },
+  {
+    img: '<img src="kaijutest6.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 6
+  },
+  {
+    img: '<img src="kaijutest7.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 7
+  },
+  {
+    img: '<img src="kaijutest8.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 8
+  },
+  {
+    img: '<img src="kaijutest9.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 9
+  },
+  {
+    img: '<img src="kaijutest10.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 10
+  },
+  {
+    img: '<img src="kaijutest11.png" class="kaiju" alt="" srcset="" onclick="shoot()"></img>',
+    id: 11
+  }
+]
 
 
-
-
+// game functions
 function buyMissile() {
   if (kaijuCores >= autoUpgrades.missiles.price) {
     kaijuCores -= autoUpgrades.missiles.price;
@@ -75,6 +133,16 @@ function buyComputer() {
     statUpdate()
   }
 }
+function buySupport() {
+  if (kaijuCores >= shootUpgrades.support.price) {
+    kaijuCores -= shootUpgrades.support.price;
+    upgradeMultiplier += shootUpgrades.support.multiplier;
+    shootUpgrades.support.price += 10;
+    shootUpgrades.support.quantity++;
+    statUpdate()
+  }
+}
+
 function buyReactor() {
   if (kaijuCores >= reactorUpgrades.reactor.price) {
     kaijuCores -= reactorUpgrades.reactor.price;
@@ -86,7 +154,7 @@ function buyReactor() {
 function buyHealth() {
   if (kaijuCores >= healthUpgrades.health.price) {
     kaijuCores -= healthUpgrades.health.price;
-    jaegerHealth += healthUpgrades.health.multiplier;
+    jaeger_health += healthUpgrades.health.multiplier;
     healthUpgrades.health.price *= 2;
     healthUpgrades.health.multiplier *= 2;
     healthUpgrades.health.quantity++;
@@ -96,6 +164,9 @@ function buyHealth() {
 function shoot() {
   kaijuHealth -= (defaultDamage + upgradeMultiplier);
   clickCount++;
+  if (kaijuHealth <= 0) {
+    kaijuDeath()
+  }
   statUpdate()
 }
 function collectMissile() {
@@ -105,6 +176,9 @@ function collectMissile() {
   kaijuHealth -= autoTotal;
   if (autoTotal > 0) {
     clickCount++;
+  }
+  if (kaijuHealth <= 0) {
+    kaijuDeath()
   }
   statUpdate();
   return autoTotal;
@@ -121,6 +195,9 @@ function collectDrone() {
   if (droneTotal > 0) {
     clickCount++;
   }
+  if (kaijuHealth <= 0) {
+    kaijuDeath()
+  }
   statUpdate();
   return droneTotal;
 }
@@ -132,7 +209,9 @@ function collectReactor() {
   let regenTotal = 0;
   regenTotal += (reactorUpgrades.reactor.multiplier * reactorUpgrades.reactor.quantity);
   autoRegenTotal = regenTotal;
-  jaegerHealth += regenTotal;
+  if (regenTotal > 0 && jaeger_health < (jaegerbaseHealth + jaegerMultiplier)) {
+    jaeger_health += regenTotal;
+  }
   statUpdate();
   return regenTotal;
 }
@@ -142,33 +221,27 @@ function startregenInterval() {
 function kaijuDeath() {
   if (kaijuHealth <= 0) {
     level++;
-    kaijuHealth + 5;
+    kaijuMultiplier += 5;
     kaijuCores++;
-    drawKaiju()
+    randomKaiju()
   }
 }
+// draw functions and random types
 function randomKaiju() {
-  let index = Math.floor(Math.random() * 10);
-  kaiju = kaijuType[index]
+  let lad = Math.floor(Math.random() * kaijuType.length);
+  kaiju = kaijuType[lad]
   drawKaiju()
 }
-function randomMap() {
-  let index = Math.floor(Math.random() * 5);
-  map = battleMap[index]
-  drawMap()
-}
+
 //Create kaiju index with id, picture, and battlemap
 function drawKaiju() {
-  document.getElementById('k-pic').innerHTML = kaiju.img
-  drawMap()
+  document.getElementById('k-pic').innerHTML = kaiju.img;
+  kaijuHealth = (kaijubaseHealth + kaijuMultiplier);
   drawkaijuHealth()
+  statUpdate()
 }
 function drawkaijuHealth() {
   document.getElementById('k-health').innerText = kaijuHealth.toString()
-}
-function drawMap() {
-  document.getElementById('battlemap').innerHTML = map.img
-  drawMap()
 }
 
 function statUpdate() {
@@ -186,6 +259,11 @@ function statUpdate() {
   let computertotalElem = document.getElementById("comp-total");
   computertotalElem.innerText = shootUpgrades.computer.quantity.toString();
   //updates computer cost and quantity
+  let supportcostElem = document.getElementById("support-cost");
+  supportcostElem.innerText = shootUpgrades.support.price.toString();
+  let supporttotalElem = document.getElementById("support-total");
+  supporttotalElem.innerText = shootUpgrades.support.quantity.toString();
+  //updates support cost and quantity
   let missilecostElem = document.getElementById("miss-cost");
   missilecostElem.innerText = autoUpgrades.missiles.price.toString();
   let missiletotalElem = document.getElementById("miss-total");
@@ -217,5 +295,5 @@ startmissileInterval();
 startregenInterval();
 startdroneInterval();
 drawkaijuHealth()
-drawKaiju()
+randomKaiju()
 statUpdate()

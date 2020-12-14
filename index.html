@@ -14,7 +14,7 @@
 
 <body>
   <header class="container-fluid">
-    <h1 class="display-1 text-center strong"> Pacific Click</h1>
+    <h1 class="display-1 text-center text-light strong"> Pacific Click</h1>
   </header>
   <main class="container-fluid">
     <div class="row justify-content-center text-center">
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="row text-center justify-content-center game-box">
+    <div class="row text-center justify-content-center game-box" id="battlemap">
 
       <div class="col-2 card-shelf">
         <h4 class="text-light text-center">UPGRADES</h4>
@@ -68,16 +68,17 @@
         </div>
         <div>
           <a href="#" class="link wobble-vertical-on-hover">
-            <button type="button" class="btn btn-dark button-wrench"><img src="wrench.png" class="missile" alt=""
-                onclick="buyHealth()"></button>
+            <button type="button" class="btn btn-dark button-wrench"><img src="idriselba.png" class="missile" alt=""
+                onclick="buySupport()"></button>
           </a>
-          <p class="text-light"><b>Jaeger Maintenence: <span class="text-success" id="health-cost"></span><span
+          <p class="text-light"><b>Idris Elba Moral Support: <span class="text-success" id="support-cost"></span><span
                 class="text-warning">
                 Cores</span></b></h5>
         </div>
       </div>
-      <div class="d-flex col-8 target-frame align-items-center justify-content-center">
-        <img src="kaijutest.png" class="kaiju" alt="" srcset="" onclick="shoot()">
+
+      <div class="col-8 d-flex justify-content-center align-items-center bg1" id="k-pic">
+
       </div>
       <div class="col-2  statusScreen p-0">
         <div class="card-status card-shelf p-4">
@@ -91,6 +92,8 @@
           </p>
           <p class="text-light text-left"><b>Reactor Core Upgrade(s)</b>: <span class="text-secondary"
               id="react-total"></span></p>
+          <p class="text-light text-left"><b>Pats on the Back</b>: <span class="text-secondary"
+              id="support-total"></span></p>
           <p class="text-light text-left"><b>Maintence Received</b>: <span class="text-secondary"
               id="health-total"></span></p>
         </div>
@@ -103,21 +106,30 @@
         </div>
       </div>
     </div>
+
+  </main>
+  <footer class="container-fluid text-center">
     <div class="row text-center">
       <div class="col-4 audio-controls autoplay card-shelf">
         <h2 class="text-light">Attack Counter: <span class="text-success" id="click-count"></span></h2>
       </div>
-      <div class="col-4 kaiju-health card-shelf">
-        <h4 class="text-light">JAEGER HEALTH: <span class="text-danger" id="j-health"></span><span
-            class="text-danger">%</span></h4>
+      <div class="d-flex col-4 justify-content-center kaiju-health card-shelf">
+        <h2 class="text-light text-center">JAEGER HEALTH: <span class="text-danger" id="j-health"></span><span
+            class="text-danger">%</span></h2>
+        <div>
+          <a href="#" class="link wobble-vertical-on-hover">
+            <button type="button" class="btn btn-dark button-wrench"><img src="wrench.png" class="missile" alt=""
+                onclick="buyHealth()"></button>
+          </a>
+          <p class="text-light"><b> Jaeger Maintenence<span class="text-success" id="health-cost"></span><span
+                class="text-warning">
+                Cores</span></b></h5>
+        </div>
       </div>
       <div class="col-4 emergency-sword card-shelf">
         <h2 class="text-light">Emergency Sword Protocol: <span class="text-success">Available</span></h2>
       </div>
     </div>
-  </main>
-  <footer class="container-fluid text-center">
-    <h4>Made By: Cody Bryson</h4>
   </footer>
   <!-- Optional JavaScript -->
   <script src="app.js"></script>

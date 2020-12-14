@@ -1,10 +1,11 @@
 body{
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  background-image: url(cockpit2.png);
+  background-size: cover;
 }
-
 main{
+ 
   flex-grow: 1;
   
 }
@@ -19,17 +20,12 @@ footer{
   background: black;
   opacity: .8;
 }
-.target-frame{
-  background-image: url(cockpit2.png);
-  background-size: cover;
-}
 .game-box{
-  background-image: url(citybackground.gif);
   background-size: cover;
 }
 .kaiju{
-  opacity: .8;
-  min-height: 25rem;
+  min-height: 40rem;
+  max-height: 50rem;
   
 }
 .kaijuhealthbar{
@@ -80,6 +76,7 @@ footer{
   background-color: black;
   padding: 10px;
   border-radius: 4px;
+  opacity: .8;
 }
 
 button{
@@ -89,6 +86,14 @@ button{
   min-width: 100px;
   min-height: 100px;
 }
+
+.bg1{
+background-image: url(citybackground3.gif);
+background-size: cover;
+opacity: .9;
+}
+
+
 /*===================*/
 /* WOOBLE VERTICAL
 /*===================*/
